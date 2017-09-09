@@ -1,6 +1,8 @@
 from sanic.views import HTTPMethodView
 from sanic.response import text
 
+from db import User
+
 
 class IndexView(HTTPMethodView):
     """
@@ -19,4 +21,5 @@ class IndexNameView(HTTPMethodView):
     decorators = []
 
     async def get(self, req, name):
-        return text('Hello world and {}'.format(name))
+        user = User.get_or_create(username=name)
+        return text('Hello world and {}'.format(user[0].username))

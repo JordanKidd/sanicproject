@@ -1,3 +1,5 @@
+import asyncio
+import uvloop
 from sanic import Sanic
 
 from middleware import mw
@@ -12,6 +14,7 @@ from index import (
     IndexNameView
 )
 
+asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 app = Sanic(name=__name__)
 app.config.from_object(get_env())

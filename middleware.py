@@ -1,5 +1,7 @@
 import logging
 
+from db import database
+
 from sanic import Blueprint
 
 mw = Blueprint('middleware')
@@ -8,7 +10,7 @@ mw = Blueprint('middleware')
 @mw.listener('before_server_start')
 async def before_server_start(app, loop):
     logging.debug('Server has not started... yet')
-    print('1')
+    database.connect()
 
 
 @mw.listener('after_server_start')
@@ -26,4 +28,4 @@ async def before_server_stop(app, loop):
 @mw.listener('after_server_stop')
 async def after_server_stop(app, loop):
     logging.debug('Server has stopped successfully.')
-    print('4')
+    database.close()
