@@ -15,14 +15,12 @@ async def before_server_start(app, loop):
 
 @mw.listener('after_server_start')
 async def after_server_start(app, loop):
-    logging.debug('Server has started successfully.')
-    print('2')
+    logging.debug('Server started successfully...')
 
 
 @mw.listener('before_server_stop')
 async def before_server_stop(app, loop):
     logging.debug('Server will be stopping shortly...')
-    print('3')
 
 
 @mw.listener('after_server_stop')

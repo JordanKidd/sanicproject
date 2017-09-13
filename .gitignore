@@ -1,2 +1,4 @@
 app.db
 .idea/*
+*.log
+__pycache__/*
